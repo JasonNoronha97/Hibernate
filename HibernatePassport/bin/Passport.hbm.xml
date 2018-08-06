@@ -1,0 +1,20 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+	<hibernate-mapping>
+		<class name="com.files.Person" table="PERSON">
+			<id name="pID" column="PID" type="int">
+				<generator class="assigned"/>	
+			</id>
+			<property name="pName" column="NAME" type="string"/>
+				<many-to-one name="pp" column="PASSPORT" unique="true" class="com.files.Passport" cascade="all" not-null="true"/>
+		</class>
+		<class name="com.files.Passport" table="PASSPORT">
+			<id name="ppID" type="int" column="PPID">
+				<generator class="assigned"/>
+			</id>
+			<property name="ppName" column="PPNAME" type="string"/>
+		</class>
+	</hibernate-mapping>
